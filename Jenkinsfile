@@ -6,7 +6,7 @@ node(){
 	checkout scm
 	sh "make"
 	sh "./main"
-	archiveArtifacts(artifacts 'main, *.o',fingerprint : true, onlyIfSuccessful : true)
+	archiveArtifacts(artifacts: 'main',fingerprint : true, onlyIfSuccessful : true)
 
 	
 }
