@@ -5,7 +5,7 @@ node(){
 	cleanWs()
 	checkout scm
 	
-	archiveArtifacts(artifacts: 'main',fingerprint : true, onlyIfSuccessful : true)
+	
 	stages {
         stage('Build') { 
             steps { 
