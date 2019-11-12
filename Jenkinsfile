@@ -4,9 +4,27 @@ properties([
 node(){
 	cleanWs()
 	checkout scm
-	sh "make"
-	sh "./main"
-	archiveArtifacts(artifacts: 'main',fingerprint : true, onlyIfSuccessful : true)
-
 	
+	archiveArtifacts(artifacts: 'main',fingerprint : true, onlyIfSuccessful : true)
+	stages {
+        stage('Build') { 
+            steps { 
+                sh 'make'
+		sh "./main" 
+            }
+        }
+        stage('Test'){
+            steps {
+                sh 'make check' 
+            }
+        }
+        stage('Archive') {
+            steps {
+                archiveArtifacts(artifacts: 'main',fingerprint : true, onlyIfSuccessful : true)
+
+            }
+        }
+    
+     }
+		
 }
