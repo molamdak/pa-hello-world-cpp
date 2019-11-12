@@ -10,12 +10,12 @@ node(){
         stage('Build') { 
              
                 sh 'make'
-		sh "./main" 
+		 
             }
         
         stage('Test'){
             
-                sh 'make check' 
+                sh "./main" 
             }
         
         stage('Archive') {
